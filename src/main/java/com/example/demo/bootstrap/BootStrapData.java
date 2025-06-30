@@ -135,7 +135,6 @@ public class BootStrapData implements CommandLineRunner {
                 System.out.println(part.getName() + " " + part.getCompanyName());
             }
 
-
             Product pastry1 = new Product("Croissants", 3.50, 30);
             Product pastry2 = new Product("Muffins", 4.50, 30);
             Product pastry3 = new Product("Cookies", 3.00, 30);
