@@ -20,24 +20,7 @@ import java.util.List;
 
 @Controller
 public class AboutPageController {
-   // private final PartRepository partRepository;
-   // private final ProductRepository productRepository;'
 
-    private PartService partService;
-    private ProductService productService;
-
-    private List<Part> theParts;
-    private List<Product> theProducts;
-
- /*   public MainScreenControllerr(PartRepository partRepository, ProductRepository productRepository) {
-        this.partRepository = partRepository;
-        this.productRepository = productRepository;
-    }*/
-
-    public AboutPageController(PartService partService, ProductService productService){
-        this.partService=partService;
-        this.productService=productService;
-    }
     @GetMapping("/about")
     public String about() {
         return "about.html";

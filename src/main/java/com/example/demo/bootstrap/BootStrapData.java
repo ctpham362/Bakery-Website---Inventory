@@ -81,6 +81,9 @@ public class BootStrapData implements CommandLineRunner {
             for (InhousePart part : inhouseParts) {
                 if (part.getName().equals("Friday Fritter")) thePart = part;
             }
+        }
+
+        if (outsourcedPartRepository.count() == 0) {
 
             List<OutsourcedPart> outsourcedParts = (List<OutsourcedPart>) outsourcedPartRepository.findAll();
 
@@ -134,6 +137,8 @@ public class BootStrapData implements CommandLineRunner {
             for (OutsourcedPart part : outsourcedParts) {
                 System.out.println(part.getName() + " " + part.getCompanyName());
             }
+        }
+        if (productRepository.count() == 0) {
 
             Product pastry1 = new Product("Croissants", 3.50, 30);
             Product pastry2 = new Product("Muffins", 4.50, 30);
@@ -147,7 +152,7 @@ public class BootStrapData implements CommandLineRunner {
             productRepository.save(pastry3);
             productRepository.save(bread1);
             productRepository.save(bread2);
-
+        }
 
         /*
         Product bicycle= new Product("bicycle",100.0,15);
@@ -164,4 +169,3 @@ public class BootStrapData implements CommandLineRunner {
 
         }
     }
-}

@@ -10,6 +10,7 @@ Changes Log:
 C.  Customize the HTML user interface for your customer’s application. The user interface should include the shop name, the product names, and the names of the parts.
 File:
 mainscreen.html
+MainscreenController.java
 
 Lines:
 18-21 of mainscreen.html Edited to rename shop and part category.
@@ -21,9 +22,13 @@ Lines:
 ```
 30-31 renamed add buttons
 ```
-    <a th:href="@{/showFormAddInPart}" class="btn btn-primary btn-sm mb-3">Add Daily Special</a>
-    <a th:href="@{/showFormAddOutPart}" class="btn btn-primary btn-sm mb-3">Add Weekend Special</a>
+    <a th:href="@{/showFormAddInPart}" class="btn btn-primary btn-sm mb-3">Add Daily Specials</a>
+    <a th:href="@{/showFormAddOutPart}" class="btn btn-primary btn-sm mb-3">Add Weekend Specials</a>
 ```
+
+MainscreenController.java
+Lines:
+22 and 37: Edited name to correct typo, corrected name of file 
 Note: Do not remove any elements that were included in the screen. You may add any additional elements you would like or any images, colors, and styles, although it is not required.
 
 
@@ -135,9 +140,9 @@ public class BootStrapData implements CommandLineRunner {
     }
 ```
 
-43-115: added 3 Inhouse and 2 Outsourced parts along with conditional if() statement for inventory
+42-118: added 3 Inhouse and 2 Outsourced parts along with conditional if() statement for inventory
 ```
-@Override
+    @Override
     public void run(String... args) throws Exception {
 
         if (inhousePartRepository.count() == 0) {
@@ -179,6 +184,9 @@ public class BootStrapData implements CommandLineRunner {
             for (InhousePart part : inhouseParts) {
                 if (part.getName().equals("Friday Fritter")) thePart = part;
             }
+        }
+
+        if (outsourcedPartRepository.count() == 0) {
 
             List<OutsourcedPart> outsourcedParts = (List<OutsourcedPart>) outsourcedPartRepository.findAll();
 
@@ -213,8 +221,10 @@ public class BootStrapData implements CommandLineRunner {
             System.out.println(theOutPart.getCompanyName());
 ```
 
-138-149: Added 5 Products
+141-155: Added 5 Products
 ```
+if (productRepository.count() == 0) {
+
             Product pastry1 = new Product("Croissants", 3.50, 30);
             Product pastry2 = new Product("Muffins", 4.50, 30);
             Product pastry3 = new Product("Cookies", 3.00, 30);
@@ -227,13 +237,14 @@ public class BootStrapData implements CommandLineRunner {
             productRepository.save(pastry3);
             productRepository.save(bread1);
             productRepository.save(bread2);
+        }
 ```
 
 application.properties
 Lines:
 6: updated name for database and version number 
 ```
-spring.datasource.url=jdbc:h2:file:~/PhamDatabasev.2
+spring.datasource.url=jdbc:h2:file:~/PhamDatabasev.3
 ```
 
 Note: Make sure the sample inventory is added only when both the part and product lists are empty. When adding the sample inventory appropriate for the store, the inventory is stored in a set so duplicate items cannot be added to your products. When duplicate items are added, make a “multi-pack” part.
