@@ -19,7 +19,11 @@ Lines:
     <hr>
     <h2>Specials</h2>
 ```
-
+30-31 renamed add buttons
+```
+    <a th:href="@{/showFormAddInPart}" class="btn btn-primary btn-sm mb-3">Add Daily Special</a>
+    <a th:href="@{/showFormAddOutPart}" class="btn btn-primary btn-sm mb-3">Add Weekend Special</a>
+```
 Note: Do not remove any elements that were included in the screen. You may add any additional elements you would like or any images, colors, and styles, although it is not required.
 
 
