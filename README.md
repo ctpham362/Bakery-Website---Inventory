@@ -12,7 +12,7 @@ File:
 mainscreen.html
 
 Lines:
-18-21 Edited to rename shop and part category.
+18-21 of mainscreen.html Edited to rename shop and part category.
 ```
  <div class="container">
     <h1>Ruby's Bakery</h1>
@@ -28,7 +28,83 @@ Note: Do not remove any elements that were included in the screen. You may add a
 
 
 D.  Add an “About” page to the application to describe your chosen customer’s company to web viewers and include navigation to and from the “About” page and the main screen.
+Files:
+about.html
+AboutPageController.java
 
+Lines:
+1-30 of about.html
+Created an about page and short description of shop, styled after main screen.
+```
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>About Ruby's Bakery</title>
+</head>
+<body>
+<div class="container">
+    <h1>About Ruby's Bakery</h1>
+
+
+    <p> Ruby's Bakery is a small, family owned bakery that strives to make our community better, one pastry at a time.
+    </p>
+
+    <p>
+        We started in a home kitchen and were able to branch out to this brick and mortar location due to the generous support of our friends and family.
+        Every week, we wil feature a set of unique pastries alongside our crowd favorites.
+    </p>
+    <a href="/mainscreen" class ="btn btn-primary btn-sm mb-3">Home</a>
+</div>
+</body>
+</html>
+```
+
+1-32 of AboutPageController
+Added controller and @mapping to allow access to about.html
+```
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.example.demo.controllers;
+
+import com.example.demo.domain.Part;
+import com.example.demo.domain.Product;
+import com.example.demo.service.PartService;
+import com.example.demo.service.ProductService;
+import java.util.List;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class AboutPageController {
+    private PartService partService;
+    private ProductService productService;
+    private List<Part> theParts;
+    private List<Product> theProducts;
+
+    public AboutPageController(PartService partService, ProductService productService) {
+        this.partService = partService;
+        this.productService = productService;
+    }
+
+    @GetMapping({"/about"})
+    public String about() {
+        return "about.html";
+    }
+}
+
+```
 
 E.  Add a sample inventory appropriate for your chosen store to the application. You should have five parts and five products in your sample inventory and should not overwrite existing data in the database.
 
