@@ -32,8 +32,9 @@ Files:
 about.html
 AboutPageController.java
 
+about.html
 Lines:
-1-30 of about.html
+1-30
 Created an about page and short description of shop, styled after main screen.
 ```
 <!DOCTYPE html>
@@ -68,7 +69,10 @@ Created an about page and short description of shop, styled after main screen.
 </html>
 ```
 
-1-32 of AboutPageController
+
+AboutPageController.java
+Lines:
+1-32 
 Added controller and @mapping to allow access to about.html
 ```
 //
@@ -107,7 +111,19 @@ public class AboutPageController {
 ```
 
 E.  Add a sample inventory appropriate for your chosen store to the application. You should have five parts and five products in your sample inventory and should not overwrite existing data in the database.
+Files:
+BootStrapData.java
+application.properties
 
+BootStrapData.java
+Lines:
+32, 35, 38: added repo for InhouseParts
+43-115: added 3 Inhouse and 2 Outsourced parts along with conditional if() statement for inventory
+138-152: Added 5 Products
+
+application.properties
+Lines:
+6: updated name for database and version number 
 
 Note: Make sure the sample inventory is added only when both the part and product lists are empty. When adding the sample inventory appropriate for the store, the inventory is stored in a set so duplicate items cannot be added to your products. When duplicate items are added, make a “multi-pack” part.
 
