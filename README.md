@@ -884,3 +884,20 @@ Lines:
 6: updated name for database and version number
 
 J.  Remove the class files for any unused validators in order to clean your code.
+Files:
+DeletePartValidator.java
+application.properties
+```
+spring.datasource.url=jdbc:h2:file:~/PhamDatabasev.14
+```
+
+DeletePartValidator.java
+Lines:
+1-26: deleted unused validator
+
+application.properties
+Lines:
+6: updated name for database and version number
+```
+spring.datasource.url=jdbc:h2:file:~/PhamDatabasev.15
+```
