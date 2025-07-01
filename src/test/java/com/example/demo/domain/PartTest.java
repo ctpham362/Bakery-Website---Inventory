@@ -154,6 +154,49 @@ class PartTest {
     void testHashCode() {
         partIn.setId(1l);
         partOut.setId(1l);
-        assertEquals(partIn.hashCode(),partOut.hashCode());
+        assertEquals(partIn.hashCode(), partOut.hashCode());
     }
+
+    @Test
+    void getMaxInv()
+        {
+            int max_inv=200;
+            partIn.setMaxInv(max_inv);
+            assertEquals(max_inv,partIn.getMaxInv());
+            partOut.setMaxInv(max_inv);
+            assertEquals(max_inv,partOut.getMaxInv());
+        }
+
+    @Test
+    void setMaxInv()
+    {
+        int max_inv=200;
+        partIn.setMaxInv(max_inv);
+        assertEquals(max_inv,partIn.getMaxInv());
+        partOut.setMaxInv(max_inv);
+        assertEquals(max_inv,partOut.getMaxInv());
+    }
+
+
+    @Test
+    void getMinInv()
+    {
+        int max_inv=2;
+        partIn.setMaxInv(max_inv);
+        assertEquals(max_inv,partIn.getMinInv());
+        partOut.setMaxInv(max_inv);
+        assertEquals(max_inv,partOut.getMinInv());
+    }
+
+
+    @Test
+    void setMinInv()
+    {
+        int max_inv=2;
+        partIn.setMaxInv(max_inv);
+        assertEquals(max_inv,partIn.getMinInv());
+        partOut.setMaxInv(max_inv);
+        assertEquals(max_inv,partOut.getMinInv());
+    }
+
 }

@@ -832,6 +832,55 @@ Lines:
 6: updated name for database and version number
 
 I.  Add at least two unit tests for the maximum and minimum fields to the PartTest class in the test package.
+Files:
+PartTest
+Lines:
+160-199: created tests for getter and setter methods for maximum and minimum inventory
+```
+    @Test
+    void getMaxInv()
+        {
+            int max_inv=200;
+            partIn.setMaxInv(max_inv);
+            assertEquals(max_inv,partIn.getMaxInv());
+            partOut.setMaxInv(max_inv);
+            assertEquals(max_inv,partOut.getMaxInv());
+        }
 
+    @Test
+    void setMaxInv()
+    {
+        int max_inv=200;
+        partIn.setMaxInv(max_inv);
+        assertEquals(max_inv,partIn.getMaxInv());
+        partOut.setMaxInv(max_inv);
+        assertEquals(max_inv,partOut.getMaxInv());
+    }
+
+
+    @Test
+    void getMinInv()
+    {
+        int max_inv=2;
+        partIn.setMaxInv(max_inv);
+        assertEquals(max_inv,partIn.getMinInv());
+        partOut.setMaxInv(max_inv);
+        assertEquals(max_inv,partOut.getMinInv());
+    }
+
+
+    @Test
+    void setMinInv()
+    {
+        int max_inv=2;
+        partIn.setMaxInv(max_inv);
+        assertEquals(max_inv,partIn.getMinInv());
+        partOut.setMaxInv(max_inv);
+        assertEquals(max_inv,partOut.getMinInv());
+    }
+```
+application.properties
+Lines:
+6: updated name for database and version number
 
 J.  Remove the class files for any unused validators in order to clean your code.
