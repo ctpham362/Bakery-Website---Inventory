@@ -255,6 +255,122 @@ F.  Add a “Buy Now” button to your product list. Your “Buy Now” button m
 • The button should decrement the inventory of that product by one. It should not affect the inventory of any of the associated parts.
 •  Display a message that indicates the success or failure of a purchase.
 
+Files:
+created success.html
+created failure.html
+mainscreen.html
+BuyProductsController.java
+application.properties
+
+success.html
+Lines:
+1-20: created landing page for successful purchase of products.
+```
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Success</title>
+</head>
+<body>
+<h4>Product purchased</h4>
+
+<a href="/mainscreen" class ="btn btn-primary btn-sm mb-3">Home</a>
+</body>
+</html>
+```
+
+failure.html
+Lines:
+1-20: created landing page for failure to purchase of products.
+```
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Failure</title>
+</head>
+<body>
+<h4>Purchase not successful. The product you chose may be out of stock.</h4>
+
+<a href="/mainscreen" class ="btn btn-primary btn-sm mb-3">Home</a>
+</body>
+</html>
+```
+mainscreen.html
+Lines:
+86: added "Buy Now" button.
+```
+    <a th:href="@{/buyProducts(productID=${tempProduct.id})}" class="btn btn-primary btn-sm mb-3">Buy Now</a>
+```
+
+BuyProductsController.java
+Lines:
+1-39: created new controller for "Buy Now" button in product section of mainscreen.
+```
+package com.example.demo.controllers;
+
+import com.example.demo.domain.Product;
+import com.example.demo.repositories.ProductRepository;
+import com.example.demo.service.ProductService;
+import com.example.demo.service.ProductServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+
+/**
+ *
+ *
+ *
+ *
+ */
+@Controller
+public class BuyProductsController {
+
+    @Autowired
+    private ProductRepository productRepository;
+
+@GetMapping("/buyProducts")
+    public String buyProducts(@RequestParam("productID") long theId, Model theModel) {
+        Optional<Product> product = productRepository.findById(theId);
+        int inv = product.get().getInv();
+
+        if (inv == 0) {
+            return "/failure";
+        } else {
+            product.get().setInv(inv - 1);
+            productRepository.save(product.get());
+            return "/success";
+        }
+    }
+}
+```
+application.properties
+Lines:
+6: updated name for database and version number
+```
+spring.datasource.url=jdbc:h2:file:~/PhamDatabasev.4
+```
+
 
 G.  Modify the parts to track maximum and minimum inventory by doing the following:
 •  Add additional fields to the part entity for maximum and minimum inventory.
