@@ -48,11 +48,11 @@ public class BootStrapData implements CommandLineRunner {
 
             InhousePart ih1 = new InhousePart();
             ih1.setName("Monday Muffin");
-            ih1.setInv(30);
             ih1.setPrice(2.50);
-            ih1.setId(2);
+            ih1.setId(200);
             ih1.setMinInv(1);
             ih1.setMaxInv(150);
+            ih1.setInv(30);
             inhousePartRepository.save(ih1);
             InhousePart thePart = null;
             inhouseParts = (List<InhousePart>) inhousePartRepository.findAll();
@@ -62,11 +62,11 @@ public class BootStrapData implements CommandLineRunner {
 
             InhousePart ih2 = new InhousePart();
             ih2.setName("Tuesday Tarts");
-            ih2.setInv(30);
             ih2.setPrice(3.50);
-            ih2.setId(3);
+            ih2.setId(300);
             ih2.setMinInv(1);
             ih2.setMaxInv(150);
+            ih2.setInv(30);
             inhousePartRepository.save(ih2);
             thePart = null;
             inhouseParts = (List<InhousePart>) inhousePartRepository.findAll();
@@ -76,11 +76,11 @@ public class BootStrapData implements CommandLineRunner {
 
             InhousePart ih3 = new InhousePart();
             ih3.setName("Friday Fritter");
-            ih3.setInv(30);
             ih3.setPrice(4.00);
-            ih3.setId(4);
+            ih3.setId(400);
             ih3.setMinInv(1);
             ih3.setMaxInv(150);
+            ih3.setInv(30);
             inhousePartRepository.save(ih3);
             thePart = null;
             inhouseParts = (List<InhousePart>) inhousePartRepository.findAll();
@@ -96,11 +96,11 @@ public class BootStrapData implements CommandLineRunner {
             OutsourcedPart o1 = new OutsourcedPart();
             o1.setCompanyName("Oliver's Patisserie");
             o1.setName("Caramel Cruffin");
-            o1.setInv(30);
             o1.setPrice(7.50);
             o1.setId(998);
             o1.setMinInv(1);
             o1.setMaxInv(200);
+            o1.setInv(30);
             outsourcedPartRepository.save(o1);
             OutsourcedPart theOutPart = null;
             outsourcedParts = (List<OutsourcedPart>) outsourcedPartRepository.findAll();
@@ -113,11 +113,11 @@ public class BootStrapData implements CommandLineRunner {
             OutsourcedPart o2 = new OutsourcedPart();
             o2.setCompanyName("Marley's Pastry Shop");
             o2.setName("Berry Cronut");
-            o2.setInv(30);
             o2.setPrice(8.50);
             o2.setId(997);
             o2.setMinInv(1);
             o2.setMaxInv(250);
+            o2.setInv(30);
             outsourcedPartRepository.save(o2);
             theOutPart = null;
             outsourcedParts = (List<OutsourcedPart>) outsourcedPartRepository.findAll();
@@ -150,18 +150,18 @@ public class BootStrapData implements CommandLineRunner {
         }
         if (productRepository.count() == 0) {
 
-            Product pastry1 = new Product("Croissants", 3.50, 30);
-            Product pastry2 = new Product("Muffins", 4.50, 30);
-            Product pastry3 = new Product("Cookies", 3.00, 30);
+            Product i1 = new Product("Tarts", 3.50, 30);
+            Product i2 = new Product("Muffins", 2.50, 30);
+            Product i3 = new Product("Fritters", 4.00, 30);
 
-            Product bread1 = new Product("Japanese Milk Bread Loaf", 15.00, 25);
-            Product bread2 = new Product("Artisanal Brioche Loaf", 17.00, 25);
+            Product out1 = new Product("Cruffins", 7.50, 25);
+            Product out2 = new Product("Cronuts", 8.50, 25);
 
-            productRepository.save(pastry1);
-            productRepository.save(pastry2);
-            productRepository.save(pastry3);
-            productRepository.save(bread1);
-            productRepository.save(bread2);
+            productRepository.save(i1);
+            productRepository.save(i2);
+            productRepository.save(i3);
+            productRepository.save(out1);
+            productRepository.save(out2);
         }
 
         /*
